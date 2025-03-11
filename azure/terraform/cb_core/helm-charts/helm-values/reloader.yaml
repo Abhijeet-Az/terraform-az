@@ -1,0 +1,7 @@
+reloader:
+  deployment:
+    tolerations:
+      - effect: NoSchedule
+        key: app-type
+        operator: Equal
+        value: cb-core

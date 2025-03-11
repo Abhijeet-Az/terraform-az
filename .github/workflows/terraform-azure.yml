@@ -1,0 +1,88 @@
+name: Azure Terraform
+
+on:
+  workflow_dispatch:
+    inputs:
+      service:
+        type: choice
+        options:
+        - cb-backend
+        - cb-eslz
+        - knative
+        - helm-charts
+        - global
+        
+        
+      environment:
+        type: choice
+        options:
+        - dev
+        - qa
+        - production
+        - shared
+        - global
+        
+env:
+  TF_PATH: "azure/terraform/cb_core/${{ github.event.inputs.service }}"
+  TF_ENV: ${{ github.event.inputs.environment }}
+  TF_INPUT: 0
+  TF_VAR_github_token: ${{ secrets.GIT_TOKEN }}
+  CLOUDAMQP_APIKEY: ${{ secrets.CLOUDAMQP_APIKEY }}
+  
+jobs:
+  terraform:
+    name: 'Azure Terraform'
+    env :
+      ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.AZURE_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment }}
+    
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.5.0
+          
+      - name: Git Config Update
+        run: git config --global url."https://${{ secrets.GIT_TOKEN }}@github.com".insteadOf https://github.com
+
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Terraform fmt
+        id: fmt
+        working-directory: ${{ env.TF_PATH }}
+        run: terraform fmt -check
+      
+      - name: Terraform Init
+        id: init
+        working-directory: ${{ env.TF_PATH }}
+        run: terraform init -reconfigure -backend-config=backend/${{ env.TF_ENV }}
+
+      - name: Terraform Validate
+        id: validate
+        working-directory: ${{ env.TF_PATH }}
+        run: terraform validate
+      
+      - name: Terraform Plan Global
+        if: ${{ github.event.inputs.environment ==  'global' }}
+        working-directory: ${{ env.TF_PATH }}
+        run: terraform plan -out tfplan
+  
+      - name: Terraform Plan
+        id: plan
+        if: ${{ github.event.inputs.environment !=  'global' }}
+        working-directory: ${{ env.TF_PATH }}
+        run: terraform plan -var environment=${{ env.TF_ENV }} -out tfplan
+
+      - name: Terraform Apply
+        id: apply
+        working-directory: ${{ env.TF_PATH }}
+        run: terraform apply -auto-approve tfplan

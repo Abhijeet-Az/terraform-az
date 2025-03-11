@@ -1,0 +1,23 @@
+controller:
+  admissionWebhooks:
+    patch:
+      tolerations:
+      - effect: NoSchedule
+        key: app-type
+        operator: Equal
+        value: cb-core
+      nodeSelector:
+        kubernetes.io/os: linux
+  nodeSelector:
+    kubernetes.io/os: linux
+  replicaCount: 2
+  service:
+    annotations:
+      service.beta.kubernetes.io/azure-load-balancer-health-probe-request-path: /healthz
+      service.beta.kubernetes.io/azure-load-balancer-internal: true
+    loadBalancerIP: "${ilb_ip}"
+  tolerations:
+    - effect: NoSchedule
+      key: app-type
+      operator: Equal
+      value: cb-core

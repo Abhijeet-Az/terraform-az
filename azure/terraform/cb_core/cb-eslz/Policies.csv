@@ -1,0 +1,14 @@
+PolicyID,Parameters
+/providers/Microsoft.Authorization/policyDefinitions/470baccb-7e51-4549-8b1a-3e5be069f663,{}
+/providers/Microsoft.Authorization/policyDefinitions/7803067c-7d34-46e3-8c79-0ca68fc4036d,{}
+/providers/Microsoft.Authorization/policyDefinitions/c5110b6e-5272-4989-9935-59ad06fdf341,{}
+/providers/Microsoft.Authorization/policyDefinitions/dbbdc317-9734-4dd8-9074-993b29c69008,{}
+/providers/Microsoft.Authorization/policyDefinitions/450d2877-ebea-41e8-b00c-e286317d21bf,{}
+/providers/Microsoft.Authorization/policyDefinitions/2cc2e023-0dac-4046-875b-178f683929d5,{}
+/providers/Microsoft.Authorization/policyDefinitions/a1840de2-8088-4ea8-b153-b4c723e9cb01,{}
+/providers/Microsoft.Authorization/policyDefinitions/993c2fcd-2b29-49d2-9eb0-df2c3a730c32,{}
+/providers/Microsoft.Authorization/policyDefinitions/da6e2401-19da-4532-9141-fb8fbde08431,{}
+/providers/Microsoft.Authorization/policyDefinitions/040732e8-d947-40b8-95d6-854c95024bf8,{}
+/providers/Microsoft.Authorization/policyDefinitions/b1a9997f-2883-4f12-bdff-2280f99b5915,{}
+/providers/Microsoft.Authorization/policyDefinitions/47a1ee2f-2a2a-4576-bf2a-e0e36709c2b8,{}
+/providers/Microsoft.Authorization/policyDefinitions/9ea02ca2-71db-412d-8b00-7c7ca9fcd32d,"{""tagname"" : {""value"" : ""Criticality,ApplicationName,Environment,Owner""}}"

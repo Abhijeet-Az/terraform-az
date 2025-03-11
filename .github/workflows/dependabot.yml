@@ -1,0 +1,86 @@
+version: 2
+updates:
+  - package-ecosystem: "terraform"
+    directory: "terraform/cb_core/bot-coverage"
+    schedule:
+      interval: weekly
+      day: sunday
+    open-pull-requests-limit: 10
+  - package-ecosystem: "terraform"
+    directory: "terraform/cb_core/cb-backend"
+    schedule:
+      interval: weekly
+      day: sunday
+    open-pull-requests-limit: 10
+  - package-ecosystem: "terraform"
+    directory: "terraform/cb_core/common"
+    schedule:
+      interval: weekly
+      day: sunday
+    open-pull-requests-limit: 10
+  - package-ecosystem: "terraform"
+    directory: "terraform/cb_core/dependancy-runner"
+    schedule:
+      interval: weekly
+      day: sunday
+    open-pull-requests-limit: 10
+  - package-ecosystem: "terraform"
+    directory: "terraform/cb_core/gitlab"
+    schedule:
+      interval: weekly
+      day: sunday
+    open-pull-requests-limit: 10
+  - package-ecosystem: "terraform"
+    directory: "terraform/cb_core/global"
+    schedule:
+      interval: weekly
+      day: sunday
+    open-pull-requests-limit: 10
+  - package-ecosystem: "terraform"
+    directory: "terraform/cb_core/layout-editor"
+    schedule:
+      interval: weekly
+      day: sunday
+    open-pull-requests-limit: 10
+  - package-ecosystem: "terraform"
+    directory: "terraform/cb_core/model-builder"
+    schedule:
+      interval: weekly
+      day: sunday
+    open-pull-requests-limit: 10
+  - package-ecosystem: "terraform"
+    directory: "terraform/cb_core/vpc"
+    schedule:
+      interval: weekly
+      day: sunday
+    open-pull-requests-limit: 10
+  - package-ecosystem: "terraform"
+    directory: "terraform/cb_core/new-relic"
+    schedule:
+      interval: weekly
+      day: sunday
+    open-pull-requests-limit: 10
+  - package-ecosystem: "terraform"
+    directory: "azure/terraform/cb_core/cb-eslz"
+    schedule:
+      interval: weekly
+      day: sunday
+    open-pull-requests-limit: 10
+  - package-ecosystem: "terraform"
+    directory: "azure/terraform/cb_core/cb-backend"
+    schedule:
+      interval: weekly
+      day: sunday
+    open-pull-requests-limit: 10
+  - package-ecosystem: "terraform"
+    directory: "azure/terraform/cb_core/knative"
+    schedule:
+      interval: weekly
+      day: sunday
+    open-pull-requests-limit: 10
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: sunday
+    open-pull-requests-limit: 10

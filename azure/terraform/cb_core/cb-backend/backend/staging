@@ -1,0 +1,7 @@
+    storage_account_name = "stgsbtfshared001"
+    container_name       = "tfstate-staging"
+    key                  = "cbcoretest.staging.tfstate"
+    use_azuread_auth     = true
+    subscription_id      = "85d89dad-c139-48fb-b3ed-8902eb8b0a3a"
+    tenant_id            = "c09fae9e-0750-4861-a01d-0dd6d9721be7"
+  
